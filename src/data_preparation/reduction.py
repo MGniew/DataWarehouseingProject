@@ -20,7 +20,7 @@ def get_selected_features(data, target, method="rfe",
         selector = RFE(estimator, n_components, step=1)
         result = selector.fit_transform(data, target)
     elif method == "vt":
-        selector = VarianceThreshold()
+        selector = VarianceThreshold(threshold)
         result = selector.fit_transform(data)
     else:
         result = SelectKBest(chi2, k=n_components).fit_transform(data, target)
